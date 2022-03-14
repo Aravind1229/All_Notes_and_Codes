@@ -1,0 +1,31 @@
+package product.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import productservices.bo.productBO;
+import productservices.bo.productBOimpl;
+import productservices.dto.Product;
+@WebServlet("/DisplayProductDetails")
+public class DisplayProductDetails extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		productBO bo = new productBOimpl();
+		Product product = bo.findproduct(Integer.parseInt(request.getParameter("id")));
+
+		 PrintWriter out = response.getWriter();
+		out.print("Product Details");
+		out.print(" Product ID: " + product.getId());
+		out.print(" Product Name: " + product.getName());
+		out.print(" Product Description: " + product.getDescription());
+		out.print(" Product Price: " + product.getPrice());
+	}
+
+}

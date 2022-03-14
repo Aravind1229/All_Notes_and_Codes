@@ -1,0 +1,5 @@
+productservices/dto/Product.class
+productservices/bo/productBOimpl.class
+productservices/dao/productDAOimpl.class
+productservices/dao/productDAO.class
+productservices/bo/productBO.class
